@@ -4,6 +4,7 @@ import 'package:flutter_1/widgets/drawer.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  //day 10 learned about context , constraints
   @override
   Widget build(BuildContext context) {
     return Scaffold(
