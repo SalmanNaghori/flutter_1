@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/models/catalog.dart';
 import 'package:flutter_1/widgets/drawer.dart';
+import 'package:flutter_1/widgets/item_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,9 +13,13 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Catalog"),
       ),
-      body: Center(
-        child: Container(
-          child: Text("Welcome Jarvis"),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          itemCount: CalatogModel.item.length,
+          itemBuilder: (context,index){
+          return ItemWidget(item:CalatogModel.item[index],);
+          },
         ),
       ),
       drawer: MyDrawer(),
