@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -28,12 +29,14 @@ class HomeDetailPage extends StatelessWidget {
                     MyTheme.darkBluishColor,
                   ),
                   shape: MaterialStateProperty.all(StadiumBorder())),
-              child: "Buy".text.xl.make(),
-            ).wh(100, 30)
+              child: "Add To cart".text.xl.make(),
+            ).wh(140, 30)
           ],
         ).p32(),
       ),
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamcolor,
       body: SafeArea(
         bottom: false,
@@ -59,6 +62,11 @@ class HomeDetailPage extends StatelessWidget {
                         .make(),
                     catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                     10.heightBox,
+                    "Dolor dolor gubergren sanctus sit voluptua et vero. Dolore et eirmod eirmod et clita sanctus sed, et lorem at voluptua clita. Takimata sadipscing diam et gubergren voluptua, kasd et et amet vero consetetur ipsum no vero, diam stet magna eirmod sadipscing sed voluptua gubergren. Labore justo sanctus et at sadipscing."
+                        .text
+                        .textStyle(context.captionStyle)
+                        .make()
+                        .p16()
                   ],
                 ).py64(),
               ),
