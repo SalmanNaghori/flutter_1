@@ -2,23 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final imageUrl =
-        "https://lh3.googleusercontent.com/a/AEdFTp67irl1gfXdXFTwnS5-W7zDMSQcOUVE30xGO0RYZg=-c-rg-br100";
+        "https://avatars.githubusercontent.com/u/12619420?s=460&u=26db98cbde1dd34c7c67b85c240505a436b2c36d&v=4";
     return Drawer(
       child: Container(
         color: Colors.deepPurple,
         child: ListView(
+          padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,
-                accountName: Text("Jarvis"),
-                accountEmail: Text("jarvis@gmail.com"),
+                accountName: Text("Pawan Kumar"),
+                accountEmail: Text("mtechviral@gmail.com"),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(imageUrl),
                 ),
@@ -32,7 +31,9 @@ class MyDrawer extends StatelessWidget {
               title: Text(
                 "Home",
                 textScaleFactor: 1.2,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
             ListTile(
@@ -43,7 +44,9 @@ class MyDrawer extends StatelessWidget {
               title: Text(
                 "Profile",
                 textScaleFactor: 1.2,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
             ListTile(
@@ -52,11 +55,13 @@ class MyDrawer extends StatelessWidget {
                 color: Colors.white,
               ),
               title: Text(
-                "Email Me",
+                "Email me",
                 textScaleFactor: 1.2,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),
