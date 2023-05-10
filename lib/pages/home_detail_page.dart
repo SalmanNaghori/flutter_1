@@ -1,22 +1,20 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_1/widgets/themes.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/catalog.dart';
 
 class HomeDetailPage extends StatelessWidget {
   final Item catalog;
-  HomeDetailPage({
-    Key? key,
-    required this.catalog,
-  }) : assert(catalog != null);
+
+  const HomeDetailPage({required this.catalog}) : assert(catalog != null);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.transparent),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -25,19 +23,14 @@ class HomeDetailPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                    MyTheme.darkBluishColor,
-                  ),
+                  backgroundColor:
+                      MaterialStateProperty.all(context.theme.buttonColor),
                   shape: MaterialStateProperty.all(StadiumBorder())),
-              child: "Add To cart".text.xl.make(),
-            ).wh(140, 30)
+              child: "Add to cart".text.make(),
+            ).wh(120, 50)
           ],
         ).p32(),
       ),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-      ),
-      backgroundColor: MyTheme.creamcolor,
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -48,21 +41,21 @@ class HomeDetailPage extends StatelessWidget {
             ).h32(context),
             Expanded(
                 child: VxArc(
+              height: 30.0,
               arcType: VxArcType.CONVEY,
               edge: VxEdge.TOP,
-              height: 30.0,
               child: Container(
+                color: context.cardColor,
                 width: context.screenWidth,
-                color: Colors.white,
                 child: Column(
                   children: [
                     catalog.name.text.xl4
-                        .color(MyTheme.darkBluishColor)
+                        .color(context.accentColor)
                         .bold
                         .make(),
                     catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                     10.heightBox,
-                    "Dolor dolor gubergren sanctus sit voluptua et vero. Dolore et eirmod eirmod et clita sanctus sed, et lorem at voluptua clita. Takimata sadipscing diam et gubergren voluptua, kasd et et amet vero consetetur ipsum no vero, diam stet magna eirmod sadipscing sed voluptua gubergren. Labore justo sanctus et at sadipscing."
+                    "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita. Diam aliquyam amet tempor diam no aliquyam invidunt. Elitr lorem eirmod dolore clita. Rebum."
                         .text
                         .textStyle(context.captionStyle)
                         .make()

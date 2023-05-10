@@ -1,18 +1,12 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_1/util/routes.dart';
+import 'dart:convert';
+
 import 'package:velocity_x/velocity_x.dart';
 
-import 'package:flutter_1/models/catalog.dart';
-import 'package:flutter_1/widgets/drawer.dart';
-import 'package:flutter_1/widgets/item_widget.dart';
-import 'package:flutter_1/widgets/themes.dart';
-
+import '../models/catalog.dart';
+import '../utils/routes.dart';
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
 
@@ -34,7 +28,8 @@ class _HomePageState extends State<HomePage> {
 
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
-    final catalogJson = await rootBundle.loadString("assets/file/catalog.json");
+    final catalogJson =
+        await rootBundle.loadString("assets/files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
     CatalogModel.items = List.from(productsData)
@@ -46,27 +41,26 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: context.canvasColor,
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, MyRoutes.cartRoute);
-          },
-          backgroundColor: MyTheme.darkBluishColor,
-          child: Icon(CupertinoIcons.cart),
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          backgroundColor: context.theme.buttonColor,
+          child: Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+          ),
         ),
-        backgroundColor: MyTheme.creamcolor,
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CatalogHeader(),
                 if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
                   CatalogList().py16().expand()
                 else
-                  Center(
-                    child:
-                        CircularProgressIndicator().centered().py16().expand(),
-                  )
+                  CircularProgressIndicator().centered().expand(),
               ],
             ),
           ),
